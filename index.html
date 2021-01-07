@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/style.css">
-    
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-
     <!-- Compressed JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
 
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>User Dashboard</title>
 </head>
 <body>
     <!-- Create top header -->
@@ -25,7 +23,7 @@
         <!-- Create the left side panel -->
         <aside id="leftPane" class="cell medium-3">
             <!-- Add in input form -->
-            <form >
+            <form>
                 <label>Input a City:</label>
                 <input type="text">
                 <button class="button">Search</button>
@@ -34,7 +32,7 @@
             <hr/>
 
             <!-- Add Current Location Button -->
-            <h3>Current Location:</h3>
+            <h4 style="font-weight: bold;">Current Location:</h4>
             <button id="currentLocation" class="button"> </button>
         </aside>
 
@@ -46,13 +44,13 @@
                 
                 <!-- Create first card for News -->
                 <article id="news" class="card cell medium-6">
-                    <h3>Top News Story:</h3>
+                    <h4>Top News Story:</h4>
                     <link >
                 </article>
                 <!-- Create second card for Scores -->
                 <article id="nfl" class="card cell medium-6">
-                    <h3 id="nflTeamInfo">Team Name and Icon</h3>
-                    <h4>Record: <span id="nflTeamRecord"></span></h4>
+                    <h4 id="nflTeamInfo">Team Name and Icon</h4>
+                    <h5>Record: <span id="nflTeamRecord"></span></h5>
                     <p>Last Game: <span id="lastGame"></span></p>
                     <p>Next Game: <span id="nextGame"></span></p>
                 </article>
@@ -64,14 +62,14 @@
                 
                 <!-- Create third card for Weather -->
                 <article id="weather" class="card cell medium-6">
-                    <h3>Current Weather:</h3>
+                    <h4>Current Weather:</h4>
                     <p id="temp"></p>
                     <p id="weatherIcon"></p>
                     <p id="chanceOfRain"></p>
                     
                     <br/>
 
-                    <h3>Tomorrow's Forecast:</h3>
+                    <h4>Tomorrow's Forecast:</h4>
                     <p id="minTemp"></p>
                     <p id="maxTemp"></p>
                     <p id="chanceOfRain2"></p>
@@ -79,16 +77,16 @@
                 </article>
 
                 <!-- Create fourth card for Cryptocurrency -->
-                <article id="crypto" class="card col-md-6">
+                <article id="crypto" class="card cell medium-6">
                     <!-- Create input form for the desired crypto -->
                     <form>
-                        <label >Enter Cryptocurrency</label>
+                        <label >Enter Cryptocurrency:</label>
                         <input id="cryptoInput">
                     </form>
 
                     <!-- Display the Crypto name, price and call a chart -->
-                    <h3>Crypto Name: <span id="cryptoName"></span></h3>
-                    <h4>Current Price: <span id="cryptoPrice"></span></h4>
+                    <h4>Crypto Name: <span id="cryptoName"></span></h4>
+                    <h5>Current Price: <span id="cryptoPrice"></span></h5>
                     <img id="cryptoChart">
 
                 </article>
