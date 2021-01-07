@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
+    
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+
+    <!-- Compressed JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+
     <title>Document</title>
 </head>
 <body>
@@ -14,40 +21,49 @@
     </header>
 
     <!-- Create an overall container for the page -->
-    <main class="row">
+    <main class="grid-x">
         <!-- Create the left side panel -->
-        <aside id="leftPane" class="col-md-3">
+        <aside id="leftPane" class="cell medium-3">
             <!-- Add in input form -->
             <form >
                 <label>Input a City:</label>
-                <input>
+                <input type="text">
+                <button class="button">Search</button>
             </form>
 
             <hr/>
 
             <!-- Add Current Location Button -->
             <h3>Current Location:</h3>
-            <button id="currentLocation">asdf</button>
+            <button id="currentLocation" class="button"> </button>
         </aside>
 
         <!-- Create the right side overall pane -->
-        <section id="mainPane" class="col-md-9">
+        <section id="mainPane" class="cell medium-9">
             
             <!-- Create grid top row -->
-            <div id="topRow" class="row">
+            <div id="topRow" class="grid-x">
                 
                 <!-- Create first card for News -->
-                <article id="news" class="card col-md-6"></article>
+                <article id="news" class="card cell medium-6">
+                    <h3>Top News Story:</h3>
+                    <link >
+                </article>
                 <!-- Create second card for Scores -->
-                <article id="nfl" class="card"></article>
+                <article id="nfl" class="card cell medium-6">
+                    <h3 id="nflTeamInfo">Team Name and Icon</h3>
+                    <h4>Record: <span id="nflTeamRecord"></span></h4>
+                    <p>Last Game: <span id="lastGame"></span></p>
+                    <p>Next Game: <span id="nextGame"></span></p>
+                </article>
             
             </div>
 
             <!-- Create grid bottom row -->
-            <div id="topRow" class="row">
+            <div id="topRow" class="grid-x">
                 
                 <!-- Create third card for Weather -->
-                <article id="weather" class="card col-md-6">
+                <article id="weather" class="card cell medium-6">
                     <h3>Current Weather:</h3>
                     <p id="temp"></p>
                     <p id="weatherIcon"></p>
@@ -55,7 +71,7 @@
                     
                     <br/>
 
-                    <h3>Tomorrow's Forecast</h3>
+                    <h3>Tomorrow's Forecast:</h3>
                     <p id="minTemp"></p>
                     <p id="maxTemp"></p>
                     <p id="chanceOfRain2"></p>
@@ -66,13 +82,13 @@
                 <article id="crypto" class="card col-md-6">
                     <!-- Create input form for the desired crypto -->
                     <form>
-                        <label>Enter Cryptocurrency</label>
+                        <label >Enter Cryptocurrency</label>
                         <input id="cryptoInput">
                     </form>
 
                     <!-- Display the Crypto name, price and call a chart -->
-                    <h3 id="cryptoName"></h3>
-                    <h4 id="cryptoPrice"></h4>
+                    <h3>Crypto Name: <span id="cryptoName"></span></h3>
+                    <h4>Current Price: <span id="cryptoPrice"></span></h4>
                     <img id="cryptoChart">
 
                 </article>
