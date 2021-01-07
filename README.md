@@ -35,8 +35,7 @@ User Story:
 
 ## Deployed Link
 
-* [See Live Site](https://jas-f.github.io/Passwoord-generator/)
-* [Link to Github](https://github.com/slimbeek6/team7-score-dash)
+* [See Live Site](/)
 
 ## Built With
 
