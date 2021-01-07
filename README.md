@@ -44,14 +44,17 @@ User Story:
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Bootstrap](https://getbootstrap.com/)
 * [CoinMarketCap](https://coinmarketcap.com/api/)
+* [OpenWeatherMap](https://openweathermap.org/api)
+* [News API(TBD)]()
+* [Sports API(TBD)]()
 
 ## Authors
 
-**Jasmine Franklin** [Link to LinkedIn](https://www.linkedin.com/in/jasmine-franklin-8b08ba121)
+**Jasmine Franklin** [LinkedIn](https://www.linkedin.com/in/jasmine-franklin-8b08ba121)
 
 **Shaun Limbeek**
 
-**Sammy Kroner**
+**Sammy Kroner** [LinkedIn](www.linkedin.com/in/samuel-kroner-44aa11169)
 
 
 
