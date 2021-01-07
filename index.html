@@ -16,11 +16,70 @@
     <!-- Create an overall container for the page -->
     <main class="row">
         <!-- Create the left side panel -->
-        <aside id="leftPane">
+        <aside id="leftPane" class="col-md-3">
             <!-- Add in input form -->
-            
+            <form >
+                <label>Input a City:</label>
+                <input>
+            </form>
 
+            <hr/>
+
+            <!-- Add Current Location Button -->
+            <h3>Current Location:</h3>
+            <button id="currentLocation">asdf</button>
         </aside>
+
+        <!-- Create the right side overall pane -->
+        <section id="mainPane" class="col-md-9">
+            
+            <!-- Create grid top row -->
+            <div id="topRow" class="row">
+                
+                <!-- Create first card for News -->
+                <article id="news" class="card col-md-6"></article>
+                <!-- Create second card for Scores -->
+                <article id="nfl" class="card"></article>
+            
+            </div>
+
+            <!-- Create grid bottom row -->
+            <div id="topRow" class="row">
+                
+                <!-- Create third card for Weather -->
+                <article id="weather" class="card col-md-6">
+                    <h3>Current Weather:</h3>
+                    <p id="temp"></p>
+                    <p id="weatherIcon"></p>
+                    <p id="chanceOfRain"></p>
+                    
+                    <br/>
+
+                    <h3>Tomorrow's Forecast</h3>
+                    <p id="minTemp"></p>
+                    <p id="maxTemp"></p>
+                    <p id="chanceOfRain2"></p>
+
+                </article>
+
+                <!-- Create fourth card for Cryptocurrency -->
+                <article id="crypto" class="card col-md-6">
+                    <!-- Create input form for the desired crypto -->
+                    <form>
+                        <label>Enter Cryptocurrency</label>
+                        <input id="cryptoInput">
+                    </form>
+
+                    <!-- Display the Crypto name, price and call a chart -->
+                    <h3 id="cryptoName"></h3>
+                    <h4 id="cryptoPrice"></h4>
+                    <img id="cryptoChart">
+
+                </article>
+            </div>
+
+            
+        </section>
     </main>
         
 </body>
