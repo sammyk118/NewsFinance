@@ -87,7 +87,7 @@ function populateCrypto (event) {
     var cryptoURL = "https://cors-anywhere.herokuapp.com/http://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY="+apikey;
     var cryptoInput = $("#cryptoInput").val().trim();
     console.log(cryptoURL);
-    $("#cryptoName").text(cryptoInput.toUpperCase());
+    // $("#cryptoName").text(cryptoInput.toUpperCase());
 
     $.ajax({
         url: cryptoURL,
@@ -101,14 +101,69 @@ function populateCrypto (event) {
         
         // console.log(response);
         for (var i=0; i < response.data.length; i++) {
-            // console.log(response.data.IndexOf(cryptoInput));
+            // Create list of top 25 cryptos by market cap
+            var validCryptos = [
+                    {"name": "Bitcoin",
+                    "symbol": "btc"},
+                    {"name": "Ethereum",
+                    "symbol": "eth"},
+                    {"name": "Litecoin",
+                    "symbol": "ltc"},
+                    {"name": "Ripple",
+                    "symbol": "xrp"},
+                    {"name": "Bitcoin Cash",
+                    "symbol": "bch"},
+                    {"name": "Stellar Lumens",
+                    "symbol": "xlm"},
+                    {"name": "Chainlink",
+                    "symbol": "link"},
+                    {"name": "Wrapped Bitcoin",
+                    "symbol": "wbtc"},
+                    {"name": "EOS",
+                    "symbol": "eos"},
+                    {"name": "Tezos",
+                    "symbol": "xtz"},
+                    {"name": "Uniswap",
+                    "symbol": "uni"},
+                    {"name": "Dai",
+                    "symbol": "dai"},
+                    {"name": "Aave",
+                    "symbol": "aave"},
+                    {"name": "Synthetix Network Token",
+                    "symbol": "snx"},
+                    {"name": "Cosmos",
+                    "symbol": "atom"},
+                    {"name": "yearn.finance",
+                    "symbol": "yfi"},
+                    {"name": "Maker",
+                    "symbol": "mkr"},
+                    {"name": "Filecoin",
+                    "symbol": "fil"},
+                    {"name": "Dash",
+                    "symbol": "dash"},
+                    {"name": "Ethereum Classic",
+                    "symbol": "etc"},
+                    {"name": "ZCash",
+                    "symbol": "zec"},
+                    {"name": "Compound",
+                    "symbol": "comp"},
+                    {"name": "Algorand",
+                    "symbol": "algo"},
+                    {"name": "UMA",
+                    "symbol": "uma"},
+                    {"name": "OMG Network",
+                    "symbol": "omg"},
+                ]
+
+            
            
             if (response.data[i].symbol.toLowerCase() == cryptoInput.toLowerCase()) {
-
+                var cName = response.data[i].name;
                 var priceChg = response.data[i].quote.USD.percent_change_24h.toFixed(2);
                 var priceChg1 = response.data[i].quote.USD.percent_change_1h.toFixed(2);
                 var priceChg7 = response.data[i].quote.USD.percent_change_7d.toFixed(2);
                 var cryptoPrice = response.data[i].quote.USD.price.toFixed(2);
+                $("#cryptoName").text(cName + " - " + cryptoInput);
                 $("#cryptoArea").append("<p id='cupr'>Current Price: $"+ cryptoPrice +"</p>");    
                 $("#cryptoArea").append("<p id='1hpc'>1 Hour Price Change: <span id='cryptoChange1'>"+ priceChg1 + " %</span></p>");
                 $("#cryptoArea").append("<p id='24hpc'>24 Hour Price Change: <span id='cryptoChange'>"+ priceChg + " %</span></p>");
@@ -138,9 +193,15 @@ function populateCrypto (event) {
         // Create a check to see if the crypto entered exists
         if (!priceChg) {
             // When it doesn't, we need to pop out a modal that says this crypto doesn't exist.
-
+            $("#cryptoName").text("This crypto search term is not supported, please choose from this list of options");
             // In this modal, could we add a list of the top 25 coins by marketcap with name and search symbol **User validation**
-
+            $("#inputIssue").attr("style", "display: flex; background-color: yellow; color: red");
+            for (j=0; j<25; j++) {
+                $("#inputIssue").append("<p>Name: " + validCryptos[j].name + " -  Symbol: " + validCryptos[j].symbol + "</p>");
+            }
+        }
+        else {
+            $("#inputIssue").attr("style", "display: none");
         }
     });
     
