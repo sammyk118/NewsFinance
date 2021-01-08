@@ -1,0 +1,25 @@
+header {
+    text-align: center;
+    background-color: aqua;
+}
+
+.card {
+    margin-top: 1px;
+    padding: 1%;
+    background-color: linen;
+}
+
+aside {
+    background-color: lightgreen;
+    padding: 1%;
+}
+
+label {
+    font-size: 24px;
+    font-weight: bold;
+
+}
+
+button {
+    margin-left: 2%;
+}
