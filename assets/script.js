@@ -1,12 +1,12 @@
 var searchBtn = $("#searchBtn");
 var searchCity = $("#searchCity");
-var currTime = $("timeOfDay");
-var currDate = $("dateTime");
+var currTime = $("#timeOfDay");
+var currDate = $("#dateTime");
 var currTemp = $("#temp");
-var currRain = $("chanceOfRain");
-var futureMinTemp = $("minTemp");
-var futureMaxTemp = $("maxTemp");
-var futureRain = $("chanceOfRain2");
+var currRain = $("#chanceOfRain");
+var futureMinTemp = $("#minTemp");
+var futureMaxTemp = $("#maxTemp");
+var futureRain = $("#chanceOfRain2");
 
 var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 
@@ -38,9 +38,21 @@ function dateAndTime() {
     var rawDate = new Date();
     rawDate = String(rawDate);
     console.log(rawDate);
-    console.log(typeof rawDate);
-    var prettyDate = rawDate.split(" ")[4] + " " + rawDate.split(" ")[1] + ;
+    var timeData = rawDate.split(" ")[4];
+    timeData = timeData.split(":")[0] + ":" + timeData.split(":")[1];
+    var prettyDate = timeData + ", " + rawDate.split(" ")[0] + " " + rawDate.split(" ")[1] + " " + rawDate.split(" ")[2];
     console.log(prettyDate);
+    currDate.text(prettyDate);
+
+    if (timeData.split(":")[0] < 10) {
+        currTime.text("Morning");
+    }
+    else if (timeData.split(":")[0] > 10 && timeData.split(":")[0] < 15) {
+        currTime.text("Afternoon");
+    }
+    else {
+        currTime.text("Evening");
+    }
 }
 
 searchBtn.on("click", function (event) {
