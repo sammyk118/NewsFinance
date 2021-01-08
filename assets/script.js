@@ -94,40 +94,54 @@ function populateCrypto (event) {
         method: "GET",
         cors: true
     }).then(function (response) {
-        
+        $("#cupr").remove();
+        $("#1hpc").remove();
+        $("#24hpc").remove();
+        $("#7dpc").remove();
         
         // console.log(response);
         for (var i=0; i < response.data.length; i++) {
-           if (response.data[i].symbol.toLowerCase() == cryptoInput.toLowerCase()) {
-            var priceChg = response.data[i].quote.USD.percent_change_24h.toFixed(2);
-            var priceChg1 = response.data[i].quote.USD.percent_change_1h.toFixed(2);
-            var priceChg7 = response.data[i].quote.USD.percent_change_7d.toFixed(2);
-            var cryptoPrice = response.data[i].quote.USD.price.toFixed(2);
-            $("#cryptoArea").append("<p>Current Price: $"+ cryptoPrice +"</p>");    
-            $("#cryptoArea").append("<p>1 Hour Price Change: <span id='cryptoChange1'>"+ priceChg1 + " %</span></p>");
-            $("#cryptoArea").append("<p>24 Hour Price Change: <span id='cryptoChange'>"+ priceChg + " %</span></p>");
-            $("#cryptoArea").append("<p>7 Day Price Change: <span id='cryptoChange7'>"+ priceChg7 + " %</span></p>");
-            if (priceChg >= 0) {
-                $("#cryptoChange").attr("style", "color: green");
-            }
-            else {
-                $("#cryptoChange").attr("style", "color: red");
-            }
-            if (priceChg7 >= 0) {
-                $("#cryptoChange7").attr("style", "color: green");
-            }
-            else {
-                $("#cryptoChange7").attr("style", "color: red");
-            }
-            if (priceChg1 >= 0) {
-                $("#cryptoChange1").attr("style", "color: green");
-            }
-            else {
-                $("#cryptoChange1").attr("style", "color: red");
-            }
+            // console.log(response.data.IndexOf(cryptoInput));
+           
+            if (response.data[i].symbol.toLowerCase() == cryptoInput.toLowerCase()) {
+
+                var priceChg = response.data[i].quote.USD.percent_change_24h.toFixed(2);
+                var priceChg1 = response.data[i].quote.USD.percent_change_1h.toFixed(2);
+                var priceChg7 = response.data[i].quote.USD.percent_change_7d.toFixed(2);
+                var cryptoPrice = response.data[i].quote.USD.price.toFixed(2);
+                $("#cryptoArea").append("<p id='cupr'>Current Price: $"+ cryptoPrice +"</p>");    
+                $("#cryptoArea").append("<p id='1hpc'>1 Hour Price Change: <span id='cryptoChange1'>"+ priceChg1 + " %</span></p>");
+                $("#cryptoArea").append("<p id='24hpc'>24 Hour Price Change: <span id='cryptoChange'>"+ priceChg + " %</span></p>");
+                $("#cryptoArea").append("<p id='7dpc'>7 Day Price Change: <span id='cryptoChange7'>"+ priceChg7 + " %</span></p>");
+                
+                if (priceChg >= 0) {
+                    $("#cryptoChange").attr("style", "color: green");
+                }
+                else {
+                    $("#cryptoChange").attr("style", "color: red");
+                }
+                if (priceChg7 >= 0) {
+                    $("#cryptoChange7").attr("style", "color: green");
+                }
+                else {
+                    $("#cryptoChange7").attr("style", "color: red");
+                }
+                if (priceChg1 >= 0) {
+                    $("#cryptoChange1").attr("style", "color: green");
+                }
+                else {
+                    $("#cryptoChange1").attr("style", "color: red");
+                }
            }
+
         }
-        
+        // Create a check to see if the crypto entered exists
+        if (!priceChg) {
+            // When it doesn't, we need to pop out a modal that says this crypto doesn't exist.
+
+            // In this modal, could we add a list of the top 25 coins by marketcap with name and search symbol **User validation**
+
+        }
     });
     
 }
