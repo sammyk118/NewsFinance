@@ -10,6 +10,18 @@ var futureRain = $("chanceOfRain2");
 
 // var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 
+// ====================================================================================
+
+
+
+
+
+
+
+// =====================================================================================
+
+
+
 function getWeather(city) {
     var currWURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + wKey;
     var futureWURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + wKey;
@@ -49,3 +61,9 @@ searchBtn.on("click", function (event) {
 });
 
 dateAndTime();
+
+
+
+
+
+
