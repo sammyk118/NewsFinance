@@ -64,4 +64,8 @@ This project is licensed under the MIT License
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
+<<<<<<< HEAD
 <p>&copy; UC Berkeley Extension Bootcamp.</p>
+=======
+<p>&copy; UC Berkeley Extension Bootcamp.</p>
+>>>>>>> 48efcf726b64a7220bccd04464086627673aa468
