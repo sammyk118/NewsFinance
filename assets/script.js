@@ -39,7 +39,7 @@ function dateAndTime() {
     rawDate = String(rawDate);
     console.log(rawDate);
     console.log(typeof rawDate);
-    var prettyDate = rawDate.split(" ")[4] + " " + rawDate.split(" ")[1] + ;
+    var prettyDate = rawDate.split(" ")[4] + " " + rawDate.split(" ")[1];
     console.log(prettyDate);
 }
 
