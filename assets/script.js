@@ -8,7 +8,17 @@ var futureMinTemp = $("#minTemp");
 var futureMaxTemp = $("#maxTemp");
 var futureRain = $("#chanceOfRain2");
 
-var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
+// var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
+
+// ====================================================================================
+
+
+
+
+
+
+
+// =====================================================================================
 
 
 
