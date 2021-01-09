@@ -10,22 +10,17 @@ var futureRain = $("#chanceOfRain2");
 
 // var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 
-var unirest = require("unirest");
+function getStock(ticker='TSLA') {
+    var searchStock= $('#search-stock');
+    var url='https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=YD43NGRDHKUNLAFD';
 
-var req = unirest("GET", "https://therundown-therundown-v1.p.rapidapi.com/sports/2/teams");
-
-req.headers({
-	"x-rapidapi-key": "484558acf6mshfe498977bbc3248p121c38jsn77d1779f20b0",
-	"x-rapidapi-host": "therundown-therundown-v1.p.rapidapi.com",
-	"useQueryString": true
-});
-
-
-req.end(function (res) {
-	if (res.error) throw new Error(res.error);
-
-	console.log(res.body);
-});
+    $.ajax({
+        url: url,
+        method: 'GET',
+    }).then(function (response) {
+        console.log(response);
+      })
+  }
 
 
 
