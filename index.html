@@ -53,11 +53,29 @@
                     <link>
                 </article>
                 <!-- Create second card for Scores -->
-                <article id="nfl" class="card cell medium-6">
-                    <h4 id="name">Team Name and Icon</h4>
-                    <h5><span id="mascot"></span></h5>
-                    <h5>Record: <span id="record"></span></h5>
-                    <p>Next Game: <span id="record"></span></p>
+                <article id="stocks" class="card cell medium-6">
+                    <input type= 'text' placeholder="please enter ticker" id='stock-input'/>
+                    <button id= 'search-stocks' class='button'>Search</button>
+                    <h4 id="stock-ticker"></h4>
+                    <h4 id="stock-price"></h4>
+                    
+                    <table>
+                        <tr>
+                            <th>High</th>
+                            <td id='stock-high'></td>
+                        </tr>
+
+                        <tr>
+                            <th>Low</th>
+                            <td id='stock-low'></td>
+                        </tr>
+
+                        <tr>
+                            <th>% Change</th>
+                            <td id='stock-change'></td>
+                        </tr>
+                    </table>
+                    
                 </article>
 
             </div>
