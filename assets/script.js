@@ -7,8 +7,7 @@ var currRain = $("#chanceOfRain");
 var futureMinTemp = $("#minTemp");
 var futureMaxTemp = $("#maxTemp");
 var futureRain = $("#chanceOfRain2");
-
-// var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
+var searchStock = $("#search-stock");
 
 // =====================================================================
 
@@ -19,13 +18,24 @@ function getStock(ticker='TSLA'){
         method: 'GET',
     }).then(function(response) {
         console.log(response)
-        var stock, price, perChange;
+        var stock, price, high, low, perChange;
         var globalQuote = response['Global Quote']
         console.table(globalQuote);
+        if (globalQuote.hasOwnProperty('01. symbol')) {
         stock = globalQuote['01. symbol'];
         price = globalQuote['05. price'];
+        high = globalQuote['03. high'];
+        low = globalQuote['04. low'];
         perChange = globalQuote['10. change percent'];
-        console.log(stock, price, perChange);
+        console.log(stock, price, high, low, perChange);
+        $('#stock-ticker').text(stock);
+        $('#stock-price').text(price);
+        $('#stock-high').text(high);
+        $('#stock-low').text(low);
+        $('#stock-change').text(change);
+    } else {
+        alert('Please Provide Valid Ticker');
+    }
 
     });
 
@@ -176,5 +186,5 @@ function populateCrypto (event) {
     
 }
 
-$(document).on("click", "#cryptoSearch", populateCrypto,);
-getStock()
+$(document).on("click", "#cryptoSearch", populateCrypto, getStock);
+
