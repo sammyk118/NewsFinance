@@ -34,10 +34,9 @@ function getStock(ticker='TSLA'){
         $('#stock-low').text(low);
         $('#stock-change').text(change);
     } else {
-        alert('Please Provide Valid Ticker');
+        $('#stock-ticker').text('Enter Please Provide Valid Ticker')
     }
-
-    });
+ });
 
 }
 
@@ -186,5 +185,9 @@ function populateCrypto (event) {
     
 }
 
-$(document).on("click", "#cryptoSearch", populateCrypto, getStock);
-
+$(document).on("click", "#cryptoSearch", populateCrypto);
+searchStock.on('click', function(){
+    var ticker = $('#stock-input').val();
+    if(ticker == '') return;
+    getStock(ticker);
+});
