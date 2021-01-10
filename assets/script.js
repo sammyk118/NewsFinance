@@ -34,44 +34,11 @@ function getStock(ticker='TSLA'){
         $('#stock-low').text(low);
         $('#stock-change').text(change);
     } else {
-        $('#stock-ticker').text('Enter Please Provide Valid Ticker')
+        $('#stock-ticker').text('Please Enter Valid Symbol')
     }
  });
 
-}
-
-// function getStock(ticker='TSLA') {
-//     var searchStock= $('#search-stock');
-//     var url='https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=YD43NGRDHKUNLAFD';
-
-//     $.ajax({
-//         url: url,
-//         method: 'GET',
-//     }).then(function (response) {
-//         // console.log(response);
-//         var stock, price, perChange;
-//         if(!response.hasOwnProperty['Global Quote']){
-//             alert()
-//             return
-//         }
-//         var globalQuote=response['Global Quote'];
-//         if(globalQuote.hasOwnProperty('01.symbol')){
-//             stock= globalQuote['01.symbol'];
-//             price= globalQuote['05.price'];
-//             perChange= globalQuote['10.change percent'];
-//             $('#stock-ticker').text(stock);
-//             $('#stock-price').text(price);
-//             $('#stock-high').text();
-//             $('#stock-low').text();
-//             $('#stock-change').text();
-
-//         }else{
-//             $('#stock-ticker').text("Please enter valid ticker")
-
-//         }
-
-//       });
-//   }
+} 
 
 // ======================================================================================
 
@@ -186,6 +153,7 @@ function populateCrypto (event) {
 }
 
 $(document).on("click", "#cryptoSearch", populateCrypto);
+getStock()
 searchStock.on('click', function(){
     var ticker = $('#stock-input').val();
     if(ticker == '') return;

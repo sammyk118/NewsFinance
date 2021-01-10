@@ -54,8 +54,8 @@
                 </article>
                 <!-- Create second card for Scores -->
                 <article id="stocks" class="card cell medium-6">
-                    <input type= 'text' placeholder="please enter ticker" id='stock-input'/>
-                    <button id= 'search-stock' class='button'>Search</button>
+                    <input type= 'text' placeholder="please enter symbol" id='stock-input'/>
+                    <button id= 'search-stocks' class='button'>Search</button>
                     <h4 id="stock-ticker"></h4>
                     <h4 id="stock-price"></h4>
                     
@@ -105,13 +105,12 @@
                     <form>
                         <label>Enter Cryptocurrency:</label>
                         <input id="cryptoInput">
-                        <button id="cryptoSearch" class="button">Go</button>
                     </form>
 
                     <!-- Display the Crypto name, price and call a chart -->
-                    <h4 id="cryptoArea">Crypto Name: <span id="cryptoName"></span></h4>
-                    <!-- <p>Current Price: <span id="cryptoPrice"></span></p> -->
-                    
+                    <h4>Crypto Name: <span id="cryptoName"></span></h4>
+                    <h5>Current Price: <span id="cryptoPrice"></span></h5>
+                    <img id="cryptoChart">
 
                 </article>
             </div>
