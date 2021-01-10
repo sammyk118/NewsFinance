@@ -32,8 +32,8 @@ function getStock(ticker='TSLA'){
         $('#stock-price').text(price);
         $('#stock-high').text(high);
         $('#stock-low').text(low);
-        $('#stock-change').text(change);
-    } else {
+        $('#stock-change').text(perChange);
+    }else{
         $('#stock-ticker').text('Please Enter Valid Symbol')
     }
  });
@@ -153,7 +153,6 @@ function populateCrypto (event) {
 }
 
 $(document).on("click", "#cryptoSearch", populateCrypto);
-getStock()
 searchStock.on('click', function(){
     var ticker = $('#stock-input').val();
     if(ticker == '') return;
