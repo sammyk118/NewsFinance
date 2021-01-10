@@ -12,13 +12,21 @@ var futureRain = $("#chanceOfRain2");
 
 // =====================================================================
 
-function getStock(ticker){
-    var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=AM5YIH12ODHXL7UF';
+function getStock(ticker='TSLA'){
+    var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=AM5YIH12ODHXL7UF';
     $.ajax({
         url : url,
         method: 'GET',
     }).then(function(response) {
         console.log(response)
+        var stock, price, perChange;
+        var globalQuote = response['Global Quote']
+        console.table(globalQuote);
+        stock = globalQuote['01. symbol'];
+        price = globalQuote['05. price'];
+        perChange = globalQuote['10. change percent'];
+        console.log(stock, price, perChange);
+
     });
 
 }
@@ -168,4 +176,5 @@ function populateCrypto (event) {
     
 }
 
-$(document).on("click", "#cryptoSearch", populateCrypto);
+$(document).on("click", "#cryptoSearch", populateCrypto,);
+getStock()
