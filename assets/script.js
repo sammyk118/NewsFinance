@@ -75,6 +75,7 @@ function getWeather(city) {
         // console.log(response.coord.lat);
         latInp = response.coord.lat;
         lngInp = response.coord.lon;
+        initMap(city);
     })
 
     $.ajax({
@@ -92,6 +93,7 @@ function getWeather(city) {
             }
         }
     })
+    
 }
 
 function dateAndTime() {
@@ -122,7 +124,7 @@ $(document).on("click", "#citySearch", function (event) {
     localStorage.setItem("lastCity", city);
     // console.log(city);
     getWeather(city);
-    initMap(city);
+    
 });
 
 dateAndTime();
