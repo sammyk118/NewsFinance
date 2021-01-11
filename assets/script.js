@@ -8,13 +8,36 @@ var futureMinTemp = $("#minTemp");
 var futureMaxTemp = $("#maxTemp");
 var futureRain = $("#chanceOfRain2");
 var searchStock = $("#search-stock");
-
+var coords = {};
+var latInp = 0;
+var lngInp = 0;
 
 var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 
 
-function getStock(ticker = 'TSLA') {
-    var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + ticker + '&apikey=AM5YIH12ODHXL7UF';
+
+// Create function to run google maps API
+let map;
+
+function initMap() {
+    console.log(latInp);
+    console.log(lngInp);
+    coords = {lat: latInp, lng: lngInp};
+    console.log(coords);
+    
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: coords,
+      zoom: 8,
+    });
+    // var marker = new google.maps.Marker({
+    //     position: location,
+    //     map: map
+    // });
+}
+
+function getStock(ticker='TSLA'){
+    var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=AM5YIH12ODHXL7UF';
+
     $.ajax({
         url: url,
         method: 'GET',
@@ -50,6 +73,7 @@ function getStock(ticker = 'TSLA') {
 
 // ======================================================================================
 
+
 function getWeather(city) {
     var currWURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + wKey + "&units=imperial";
     var futureWURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + wKey + "&units=imperial";
@@ -60,7 +84,9 @@ function getWeather(city) {
         method: "GET",
     }).then(function (response) {
         currTemp.text("Temperature: " + response.main.temp);
-        console.log(response);
+        // console.log(response.coord.lat);
+        latInp = response.coord.lat;
+        lngInp = response.coord.lon;
     })
 
     $.ajax({
@@ -108,7 +134,7 @@ $(document).on("click", "#citySearch", function (event) {
     localStorage.setItem("lastCity", city);
     // console.log(city);
     getWeather(city);
-    // initMap(city);
+    initMap(city);
 });
 
 dateAndTime();
@@ -299,13 +325,7 @@ function reShowCrypto() {
     $("#crypto").attr("style", "display: flex;");
 }
 
-// function initMap(inputCity) {
-//     var location = inputCity;
-//     const map = new google.maps.MAP(document.getElementById("map"), {
-//         zoom: 4,
-//         center: location,
-//     });
-// }
+
 
 $(document).on("click", "#cryptoSearch", populateCrypto);
 
