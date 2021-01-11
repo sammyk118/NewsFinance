@@ -226,7 +226,7 @@ function populateCrypto (event) {
             $("#inputIssue").attr("style", "display: flex; background-color: yellow; color: red");
             $("#crypto").attr("style", "display: none;");
             for (j=0; j<25; j++) {
-                $("#validCryptos").append("<tr><th>" + validCryptos[j].name + "</th><th>" + validCryptos[j].symbol + "</th></tr>");
+                $("#validCryptos").append("<tr><td>" + validCryptos[j].name + "</td><td>" + validCryptos[j].symbol + "</td></tr>");
                 
             }
         }
@@ -275,8 +275,8 @@ function topNews () {
     }).then(function (response) {
         console.log(response);
         $("#newsTitle").text(response.results[0].title);
-        $("#newsThumb").attr("src", response.results[0].multimedia[0].url);
-        $("#newsThumb").attr("alt", response.results[0].multimedia[0].caption);
+        $("#newsThumb").attr("src", response.results[0].multimedia[2].url);
+        $("#newsThumb").attr("alt", response.results[0].multimedia[2].caption);
         $("#storyDetail").text(response.results[0].abstract);
         $("#storyLink").attr("href", response.results[0].url);
 

@@ -40,7 +40,21 @@
             <hr/>
 
             <!-- Add Current Location Button -->
-            <h4 style="font-weight: bold;">Currently Displayed Location:</h4>
+           
+                <h4>Current Weather in <span id="displayLctn"></span>:</h4>
+                <p id="temp"></p>
+                <p id="weatherIcon"></p>
+                <p id="chanceOfRain"></p>
+
+                <br />
+
+                <h4>Tomorrow's Forecast:</h4>
+                <p id="minTemp"></p>
+                <p id="maxTemp"></p>
+                <p id="chanceOfRain2"></p>
+
+            </article>
+            
             <h5 id="prevSearch"></h5>
             <div id="map"></div>
         </aside>
@@ -52,39 +66,16 @@
             <div id="topRow" class="grid-x">
 
                 <!-- Create first card for News -->
-                <article id="news" class="card cell medium-6">
+                <article id="news" class="card cell medium-12">
                     <h4>Top News Story:</h4><br>
                     <h5 id="newsTitle"></h5>
-                    <img id="newsThumb">
-                    <p id="storyDetail"></p>
+                    <div id="newsRow" class="grid-x">
+                    <img id="newsThumb" class="card cell medium-6" style="float:right; height: 200px; width: 200px">
+                    <p id="storyDetail" class="card cell medium-6"></p>
+                    </div>
                     <a id="storyLink">Link to Story</a>
                 </article>
-                <!-- Create second card for Scores -->
-                <article id="stocks" class="card cell medium-6">
-                    <h4>Stocks</h4>
-                    <input type= 'text' placeholder="please enter symbol" id='stock-input'/>
-                    <button id= 'search-stock' class='button'>Search</button>
-                    <h4 id="stock-ticker"></h4>
-                    <h4 id="stock-price"></h4>
-                    
-                    <table>
-                        <tr>
-                            <th>High</th>
-                            <td id='stock-high'></td>
-                        </tr>
-
-                        <tr>
-                            <th>Low</th>
-                            <td id='stock-low'></td>
-                        </tr>
-
-                        <tr>
-                            <th>Percent Change</th>
-                            <td id='stock-change'></td>
-                        </tr>
-                    </table>
-                    
-                </article>
+           
 
             </div>
 
@@ -92,20 +83,32 @@
             <div id="topRow" class="grid-x">
 
                 <!-- Create third card for Weather -->
-                <article id="weather" class="card cell medium-6">
-                    <h4>Current Weather in <span id="displayLctn"></span>:</h4>
-                    <p id="temp"></p>
-                    <p id="weatherIcon"></p>
-                    <p id="chanceOfRain"></p>
-
-                    <br />
-
-                    <h4>Tomorrow's Forecast:</h4>
-                    <p id="minTemp"></p>
-                    <p id="maxTemp"></p>
-                    <p id="chanceOfRain2"></p>
-
-                </article>
+                    <!-- Create second card for Scores -->
+                    <article id="stocks" class="card cell medium-6">
+                        <h4>Stocks</h4>
+                        <input type= 'text' placeholder="please enter symbol" id='stock-input'/>
+                        <button id= 'search-stock' class='button'>Search</button>
+                        <h4 id="stock-ticker"></h4>
+                        <h4 id="stock-price"></h4>
+                        
+                        <table>
+                            <tr>
+                                <th>High</th>
+                                <td id='stock-high'></td>
+                            </tr>
+    
+                            <tr>
+                                <th>Low</th>
+                                <td id='stock-low'></td>
+                            </tr>
+    
+                            <tr>
+                                <th>Percent Change</th>
+                                <td id='stock-change'></td>
+                            </tr>
+                        </table>
+                        
+                    </article>
 
                 <!-- Create fourth card for Cryptocurrency -->
                 <article id="crypto" class="card cell medium-6">
