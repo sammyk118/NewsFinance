@@ -267,16 +267,16 @@ searchStock.on('click', function(){
 
 function topNews () {
     
-    var newsURL = "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=AU7INFiCVrpNoBfLn4anuAftA5AfsHf2";
+    var newsURL = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=AU7INFiCVrpNoBfLn4anuAftA5AfsHf2";
 
     $.ajax({
         url: newsURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response.results[0]);
+        console.log(response);
         $("#newsTitle").text(response.results[0].title);
-        // $("#newsThumb").attr("src", response.results[0].media[0].media-metadata[0].url);
-        $("#newsThumb").attr("alt", response.results[0].media[0].caption);
+        $("#newsThumb").attr("src", response.results[0].multimedia[0].url);
+        $("#newsThumb").attr("alt", response.results[0].multimedia[0].caption);
         $("#storyDetail").text(response.results[0].abstract);
         $("#storyLink").attr("href", response.results[0].url);
 
