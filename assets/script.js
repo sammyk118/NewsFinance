@@ -47,13 +47,14 @@ function getStock(ticker='TSLA'){
 function getWeather(city) {
     var currWURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + wKey + "&units=imperial";
     var futureWURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + wKey + "&units=imperial";
+    $("#prevSearch").text(city);
 
     $.ajax({
         url: currWURL,
         method: "GET",
     }).then(function (response) {
         currTemp.text("Temperature: " + response.main.temp);
-        // console.log(response);
+        console.log(response);
     })
 
     $.ajax({
@@ -66,6 +67,7 @@ function getWeather(city) {
                 futureMinTemp.text("Min: " + response.list[i].main.temp_min);
                 futureMaxTemp.text("Max: " + response.list[i].main.temp_max);
                 futureRain.text("Rain Chance: " + response.list[i].pop);
+                $("#displayLctn").text(city);
                 break;
             }
         }
@@ -97,11 +99,14 @@ function dateAndTime() {
 searchBtn.on("click", function (event) {
     var city = "";
     city = searchCity.val().trim();
+    localStorage.setItem("lastCity", city);
     // console.log(city);
     getWeather(city);
 });
 
 dateAndTime();
+
+getWeather(localStorage.getItem("lastCity"));
 
 function populateCrypto (event) {
     event.preventDefault();
@@ -215,11 +220,13 @@ function populateCrypto (event) {
         // Create a check to see if the crypto entered exists
         if (!priceChg) {
             // When it doesn't, we need to pop out a modal that says this crypto doesn't exist.
-            $("#cryptoName").text("This crypto search term is not supported, please choose from this list of options");
+            // $("#cryptoName").text("This crypto search term is not supported, please choose from this list of options");
             // In this modal, could we add a list of the top 25 coins by marketcap with name and search symbol **User validation**
             $("#inputIssue").attr("style", "display: flex; background-color: yellow; color: red");
+            $("#crypto").attr("style", "display: none;");
             for (j=0; j<25; j++) {
-                $("#inputIssue").append("<p>Name: " + validCryptos[j].name + " -  Symbol: " + validCryptos[j].symbol + "</p>");
+                $("#validCryptos").append("<tr><th>" + validCryptos[j].name + "</th><th>" + validCryptos[j].symbol + "</th></tr>");
+                
             }
         }
         else {
@@ -229,9 +236,20 @@ function populateCrypto (event) {
     
 }
 
+
+function reShowCrypto () {
+    $("#inputIssue").attr("style", "display: none");
+    $("#crypto").attr("style", "display: flex;");
+}
+
+$(document).on("click", "#cryptoSearch", populateCrypto);
+
+$(document).on("click", "#modalBtn", reShowCrypto);
+=======
 $(document).on("click", "#cryptoSearch", populateCrypto);
 searchStock.on('click', function(){
     var ticker = $('#stock-input').val();
     if(ticker == '') return;
     getStock(ticker);
 });
+
