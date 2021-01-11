@@ -15,6 +15,10 @@ var lngInp = 0;
 var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3e7c71423e2179edc9daa338cc0ae111b37513ca
 // Create function to run google maps API
 let map;
 
@@ -36,6 +40,10 @@ function initMap() {
 
 function getStock(ticker='TSLA'){
     var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=AM5YIH12ODHXL7UF';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3e7c71423e2179edc9daa338cc0ae111b37513ca
     $.ajax({
         url: url,
         method: 'GET',
