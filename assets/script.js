@@ -15,35 +15,23 @@ var lngInp = 0;
 var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3e7c71423e2179edc9daa338cc0ae111b37513ca
 // Create function to run google maps API
 let map;
 
 function initMap() {
-    console.log(latInp);
-    console.log(lngInp);
-    coords = {lat: latInp, lng: lngInp};
-    console.log(coords);
-    
+    coords = {lat: latInp, lng: lngInp};   
     map = new google.maps.Map(document.getElementById("map"), {
       center: coords,
       zoom: 8,
     });
     // var marker = new google.maps.Marker({
-    //     position: location,
+    //     position: coords,
     //     map: map
     // });
 }
 
 function getStock(ticker='TSLA'){
     var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=AM5YIH12ODHXL7UF';
-<<<<<<< HEAD
-=======
-
->>>>>>> 3e7c71423e2179edc9daa338cc0ae111b37513ca
     $.ajax({
         url: url,
         method: 'GET',
@@ -93,6 +81,7 @@ function getWeather(city) {
         // console.log(response.coord.lat);
         latInp = response.coord.lat;
         lngInp = response.coord.lon;
+        initMap(city);
     })
 
     $.ajax({
@@ -110,6 +99,7 @@ function getWeather(city) {
             }
         }
     })
+    
 }
 
 function dateAndTime() {
@@ -140,7 +130,7 @@ $(document).on("click", "#citySearch", function (event) {
     localStorage.setItem("lastCity", city);
     // console.log(city);
     getWeather(city);
-    initMap(city);
+    
 });
 
 dateAndTime();
