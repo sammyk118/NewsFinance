@@ -226,7 +226,7 @@ function populateCrypto (event) {
             $("#inputIssue").attr("style", "display: flex; background-color: yellow; color: red");
             $("#crypto").attr("style", "display: none;");
             for (j=0; j<25; j++) {
-                $("#validCryptos").append("<tr><th>" + validCryptos[j].name + "</th><th>" + validCryptos[j].symbol + "</th></tr>");
+                $("#validCryptos").append("<tr><td>" + validCryptos[j].name + "</td><td>" + validCryptos[j].symbol + "</td></tr>");
                 
             }
         }
