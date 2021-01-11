@@ -19,17 +19,13 @@ var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 let map;
 
 function initMap() {
-    console.log(latInp);
-    console.log(lngInp);
-    coords = {lat: latInp, lng: lngInp};
-    console.log(coords);
-    
+    coords = {lat: latInp, lng: lngInp};   
     map = new google.maps.Map(document.getElementById("map"), {
       center: coords,
       zoom: 8,
     });
     // var marker = new google.maps.Marker({
-    //     position: location,
+    //     position: coords,
     //     map: map
     // });
 }
