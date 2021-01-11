@@ -57,11 +57,30 @@
                     <link>
                 </article>
                 <!-- Create second card for Scores -->
-                <article id="nfl" class="card cell medium-6">
-                    <h4 id="nflTeamInfo">Team Name and Icon</h4>
-                    <h5>Record: <span id="nflTeamRecord"></span></h5>
-                    <p>Last Game: <span id="lastGame"></span></p>
-                    <p>Next Game: <span id="nextGame"></span></p>
+                <article id="stocks" class="card cell medium-6">
+                    <h4>Stocks</h4>
+                    <input type= 'text' placeholder="please enter symbol" id='stock-input'/>
+                    <button id= 'search-stock' class='button'>Search</button>
+                    <h4 id="stock-ticker"></h4>
+                    <h4 id="stock-price"></h4>
+                    
+                    <table>
+                        <tr>
+                            <th>High</th>
+                            <td id='stock-high'></td>
+                        </tr>
+
+                        <tr>
+                            <th>Low</th>
+                            <td id='stock-low'></td>
+                        </tr>
+
+                        <tr>
+                            <th>Percent Change</th>
+                            <td id='stock-change'></td>
+                        </tr>
+                    </table>
+                    
                 </article>
 
             </div>
@@ -91,13 +110,17 @@
                     <form>
                         <label>Enter Cryptocurrency:</label>
                         <input id="cryptoInput">
-                        <button id="cryptoSearch" class="button">Go</button>
                     </form>
 
+
                     <!-- Display the Crypto name and price -->
+
+                    <!-- Display the Crypto name, price and call a chart -->
+
+
                     <h4 id="cryptoArea">Crypto Name: <span id="cryptoName"></span></h4>
 
-                    
+
                 </article>
                 <!-- Input Issue Modal -->
                 <section id="inputIssue" class="card cell medium-6">
