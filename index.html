@@ -84,7 +84,7 @@
             <div id="topRow" class="grid-x">
                 <!-- Create second card for Scores -->
                 <article id="stocks" class="card cell medium-6">
-                    <h4>Stocks</h4>
+                    <label>Stocks</label>
                     <input type='text' placeholder="please enter symbol" id='stock-input' />
                     <button id='search-stock' class='button'>Search</button>
                     <h4 id="stock-ticker"></h4>
@@ -112,11 +112,9 @@
                 <!-- Create fourth card for Cryptocurrency -->
                 <article id="crypto" class="card cell medium-6">
                     <!-- Create input form for the desired crypto -->
-                    <form>
-                        <label>Enter Cryptocurrency:</label>
-                        <input id="cryptoInput">
+                        <label>Cryptocurrency:</label>
+                        <input id="cryptoInput" type="text" placeholder="please enter cryptocurrency">
                         <button class="button" id="cryptoSearch">Search</button>
-                    </form>
 
 
                     <!-- Display the Crypto name and price -->
