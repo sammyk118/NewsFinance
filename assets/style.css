@@ -24,11 +24,21 @@ button {
     margin-left: 2%;
 }
 
-.modal {
+#inputIssue {
     display: none;
 }
 
 #modalTitle {
     text-align: center;
 
+}
+
+#modalBtn {
+    margin-top: 1px;
+    padding: 1%;
+    background-color: blue;
+    color: white;
+    border: black;
+    border-radius: .25rem;
+    
 }

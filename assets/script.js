@@ -201,6 +201,7 @@ function populateCrypto (event) {
             // $("#cryptoName").text("This crypto search term is not supported, please choose from this list of options");
             // In this modal, could we add a list of the top 25 coins by marketcap with name and search symbol **User validation**
             $("#inputIssue").attr("style", "display: flex; background-color: yellow; color: red");
+            $("#crypto").attr("style", "display: none;");
             for (j=0; j<25; j++) {
                 $("#validCryptos").append("<tr><th>" + validCryptos[j].name + "</th><th>" + validCryptos[j].symbol + "</th></tr>");
                 
@@ -213,4 +214,11 @@ function populateCrypto (event) {
     
 }
 
+function reShowCrypto () {
+    $("#inputIssue").attr("style", "display: none");
+    $("#crypto").attr("style", "display: flex;");
+}
+
 $(document).on("click", "#cryptoSearch", populateCrypto);
+
+$(document).on("click", "#modalBtn", reShowCrypto);
