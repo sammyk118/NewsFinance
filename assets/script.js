@@ -13,41 +13,47 @@ var searchStock = $("#search-stock");
 var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 
 
-function getStock(ticker='TSLA'){
-    var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=AM5YIH12ODHXL7UF';
+function getStock(ticker = 'TSLA') {
+    var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + ticker + '&apikey=AM5YIH12ODHXL7UF';
     $.ajax({
-        url : url,
+        url: url,
         method: 'GET',
-    }).then(function(response) {
+    }).then(function (response) {
         console.log(response)
         var stock, price, high, low, perChange;
         var globalQuote = response['Global Quote']
         console.table(globalQuote);
         if (globalQuote.hasOwnProperty('01. symbol')) {
-        stock = globalQuote['01. symbol'];
-        price = globalQuote['05. price'];
-        high = globalQuote['03. high'];
-        low = globalQuote['04. low'];
-        perChange = globalQuote['10. change percent'];
-        console.log(stock, price, high, low, perChange);
-        $('#stock-ticker').text(stock);
-        $('#stock-price').text(price);
-        $('#stock-high').text(high);
-        $('#stock-low').text(low);
-        $('#stock-change').text(perChange);
-    }else{
-        $('#stock-ticker').text('Please Enter Valid Symbol')
-    }
- });
+            stock = globalQuote['01. symbol'];
+            price = globalQuote['05. price'];
+            high = globalQuote['03. high'];
+            low = globalQuote['04. low'];
+            perChange = globalQuote['10. change percent'];
+            console.log(stock, price, high, low, perChange);
+            $('#stock-ticker').text(stock);
+            $('#stock-price').text(price);
+            $('#stock-high').text(high);
+            $('#stock-low').text(low);
+            if (perChange >= 0) {
+                $("#stock-change").attr("style", "color: green");
+            }
+            else {
+                $("#stock-change").attr("style", "color: red");
+            }
+            $('#stock-change').text(perChange);
+        } else {
+            $('#stock-ticker').text('Please Enter Valid Symbol')
+        }
+    });
 
-} 
+}
 
 // ======================================================================================
 
 function getWeather(city) {
     var currWURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + wKey + "&units=imperial";
     var futureWURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + wKey + "&units=imperial";
- 
+
 
     $.ajax({
         url: currWURL,
@@ -62,7 +68,7 @@ function getWeather(city) {
         method: "GET",
     }).then(function (response) {
         console.log(response);
-        for (i = 0; i < response.list.length; i++){
+        for (i = 0; i < response.list.length; i++) {
             if (response.list[i].dt_txt.split(" ")[1] == "12:00:00") {
                 futureMinTemp.text("Min: " + response.list[i].main.temp_min);
                 futureMaxTemp.text("Max: " + response.list[i].main.temp_max);
@@ -109,10 +115,10 @@ dateAndTime();
 
 getWeather(localStorage.getItem("lastCity"));
 
-function populateCrypto (event) {
+function populateCrypto(event) {
     event.preventDefault();
     var apikey = "8e3a7aa0-9ee8-452e-aaf7-fabcc9ed8aae";
-    var cryptoURL = "https://cors-anywhere.herokuapp.com/http://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY="+apikey;
+    var cryptoURL = "https://cors-anywhere.herokuapp.com/http://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=" + apikey;
     var cryptoInput = $("#cryptoInput").val().trim();
     // console.log(cryptoURL);
     // $("#cryptoName").text(cryptoInput.toUpperCase());
@@ -126,65 +132,115 @@ function populateCrypto (event) {
         $("#1hpc").remove();
         $("#24hpc").remove();
         $("#7dpc").remove();
-        
+
         // console.log(response);
-        for (var i=0; i < response.data.length; i++) {
+        for (var i = 0; i < response.data.length; i++) {
             // Create list of top 25 cryptos by market cap
             var validCryptos = [
-                    {"name": "Bitcoin",
-                    "symbol": "btc"},
-                    {"name": "Ethereum",
-                    "symbol": "eth"},
-                    {"name": "Litecoin",
-                    "symbol": "ltc"},
-                    {"name": "Ripple",
-                    "symbol": "xrp"},
-                    {"name": "Bitcoin Cash",
-                    "symbol": "bch"},
-                    {"name": "Stellar Lumens",
-                    "symbol": "xlm"},
-                    {"name": "Chainlink",
-                    "symbol": "link"},
-                    {"name": "Wrapped Bitcoin",
-                    "symbol": "wbtc"},
-                    {"name": "EOS",
-                    "symbol": "eos"},
-                    {"name": "Tezos",
-                    "symbol": "xtz"},
-                    {"name": "Uniswap",
-                    "symbol": "uni"},
-                    {"name": "Dai",
-                    "symbol": "dai"},
-                    {"name": "Aave",
-                    "symbol": "aave"},
-                    {"name": "Synthetix Network Token",
-                    "symbol": "snx"},
-                    {"name": "Cosmos",
-                    "symbol": "atom"},
-                    {"name": "yearn.finance",
-                    "symbol": "yfi"},
-                    {"name": "Maker",
-                    "symbol": "mkr"},
-                    {"name": "Filecoin",
-                    "symbol": "fil"},
-                    {"name": "Dash",
-                    "symbol": "dash"},
-                    {"name": "Ethereum Classic",
-                    "symbol": "etc"},
-                    {"name": "ZCash",
-                    "symbol": "zec"},
-                    {"name": "Compound",
-                    "symbol": "comp"},
-                    {"name": "Algorand",
-                    "symbol": "algo"},
-                    {"name": "UMA",
-                    "symbol": "uma"},
-                    {"name": "OMG Network",
-                    "symbol": "omg"},
-                ]
+                {
+                    "name": "Bitcoin",
+                    "symbol": "btc"
+                },
+                {
+                    "name": "Ethereum",
+                    "symbol": "eth"
+                },
+                {
+                    "name": "Litecoin",
+                    "symbol": "ltc"
+                },
+                {
+                    "name": "Ripple",
+                    "symbol": "xrp"
+                },
+                {
+                    "name": "Bitcoin Cash",
+                    "symbol": "bch"
+                },
+                {
+                    "name": "Stellar Lumens",
+                    "symbol": "xlm"
+                },
+                {
+                    "name": "Chainlink",
+                    "symbol": "link"
+                },
+                {
+                    "name": "Wrapped Bitcoin",
+                    "symbol": "wbtc"
+                },
+                {
+                    "name": "EOS",
+                    "symbol": "eos"
+                },
+                {
+                    "name": "Tezos",
+                    "symbol": "xtz"
+                },
+                {
+                    "name": "Uniswap",
+                    "symbol": "uni"
+                },
+                {
+                    "name": "Dai",
+                    "symbol": "dai"
+                },
+                {
+                    "name": "Aave",
+                    "symbol": "aave"
+                },
+                {
+                    "name": "Synthetix Network Token",
+                    "symbol": "snx"
+                },
+                {
+                    "name": "Cosmos",
+                    "symbol": "atom"
+                },
+                {
+                    "name": "yearn.finance",
+                    "symbol": "yfi"
+                },
+                {
+                    "name": "Maker",
+                    "symbol": "mkr"
+                },
+                {
+                    "name": "Filecoin",
+                    "symbol": "fil"
+                },
+                {
+                    "name": "Dash",
+                    "symbol": "dash"
+                },
+                {
+                    "name": "Ethereum Classic",
+                    "symbol": "etc"
+                },
+                {
+                    "name": "ZCash",
+                    "symbol": "zec"
+                },
+                {
+                    "name": "Compound",
+                    "symbol": "comp"
+                },
+                {
+                    "name": "Algorand",
+                    "symbol": "algo"
+                },
+                {
+                    "name": "UMA",
+                    "symbol": "uma"
+                },
+                {
+                    "name": "OMG Network",
+                    "symbol": "omg"
+                },
+            ]
 
-            
-           
+
+
             if (response.data[i].symbol.toLowerCase() == cryptoInput.toLowerCase()) {
                 var cName = response.data[i].name;
                 var priceChg = response.data[i].quote.USD.percent_change_24h.toFixed(2);
@@ -192,11 +248,11 @@ function populateCrypto (event) {
                 var priceChg7 = response.data[i].quote.USD.percent_change_7d.toFixed(2);
                 var cryptoPrice = response.data[i].quote.USD.price.toFixed(2);
                 $("#cryptoName").text(cName + " - " + cryptoInput);
-                $("#cryptoArea").append("<p id='cupr'>Current Price: $"+ cryptoPrice +"</p>");    
-                $("#cryptoArea").append("<p id='1hpc'>1 Hour Price Change: <span id='cryptoChange1'>"+ priceChg1 + " %</span></p>");
-                $("#cryptoArea").append("<p id='24hpc'>24 Hour Price Change: <span id='cryptoChange'>"+ priceChg + " %</span></p>");
-                $("#cryptoArea").append("<p id='7dpc'>7 Day Price Change: <span id='cryptoChange7'>"+ priceChg7 + " %</span></p>");
-                
+                $("#cryptoArea").append("<p id='cupr'>Current Price: $" + cryptoPrice + "</p>");
+                $("#cryptoArea").append("<p id='1hpc'>1 Hour Price Change: <span id='cryptoChange1'>" + priceChg1 + " %</span></p>");
+                $("#cryptoArea").append("<p id='24hpc'>24 Hour Price Change: <span id='cryptoChange'>" + priceChg + " %</span></p>");
+                $("#cryptoArea").append("<p id='7dpc'>7 Day Price Change: <span id='cryptoChange7'>" + priceChg7 + " %</span></p>");
+
                 if (priceChg >= 0) {
                     $("#cryptoChange").attr("style", "color: green");
                 }
@@ -215,7 +271,7 @@ function populateCrypto (event) {
                 else {
                     $("#cryptoChange1").attr("style", "color: red");
                 }
-           }
+            }
 
         }
         // Create a check to see if the crypto entered exists
@@ -225,20 +281,20 @@ function populateCrypto (event) {
             // In this modal, could we add a list of the top 25 coins by marketcap with name and search symbol **User validation**
             $("#inputIssue").attr("style", "display: flex; background-color: yellow; color: red");
             $("#crypto").attr("style", "display: none;");
-            for (j=0; j<25; j++) {
+            for (j = 0; j < 25; j++) {
                 $("#validCryptos").append("<tr><td>" + validCryptos[j].name + "</td><td>" + validCryptos[j].symbol + "</td></tr>");
-                
+
             }
         }
         else {
             $("#inputIssue").attr("style", "display: none");
         }
     });
-    
+
 }
 
 
-function reShowCrypto () {
+function reShowCrypto() {
     $("#inputIssue").attr("style", "display: none");
     $("#crypto").attr("style", "display: flex;");
 }
@@ -256,17 +312,17 @@ $(document).on("click", "#cryptoSearch", populateCrypto);
 $(document).on("click", "#modalBtn", reShowCrypto);
 
 
-searchStock.on('click', function(){
+searchStock.on('click', function () {
     var ticker = $('#stock-input').val();
-    if(ticker == '') return;
+    if (ticker == '') return;
     getStock(ticker);
 });
 
 
 // Create API pull for top story from NYT
 
-function topNews () {
-    
+function topNews() {
+
     var newsURL = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=AU7INFiCVrpNoBfLn4anuAftA5AfsHf2";
 
     $.ajax({
