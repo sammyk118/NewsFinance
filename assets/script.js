@@ -1,5 +1,5 @@
-var searchBtn = $("#searchBtn");
-var searchCity = $("#searchCity");
+var citySearch = $("#citySearch");
+var cityInput = $("#cityInput");
 var currTime = $("#timeOfDay");
 var currDate = $("#dateTime");
 var currTemp = $("#temp");
@@ -47,7 +47,7 @@ function getStock(ticker='TSLA'){
 function getWeather(city) {
     var currWURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + wKey + "&units=imperial";
     var futureWURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + wKey + "&units=imperial";
-    $("#prevSearch").text(city);
+ 
 
     $.ajax({
         url: currWURL,
@@ -96,9 +96,9 @@ function dateAndTime() {
 
 }
 
-searchBtn.on("click", function (event) {
+$(document).on("click", "#citySearch", function (event) {
     var city = "";
-    city = searchCity.val().trim();
+    city = cityInput.val().trim();
     localStorage.setItem("lastCity", city);
     // console.log(city);
     getWeather(city);
@@ -275,8 +275,8 @@ function topNews () {
     }).then(function (response) {
         console.log(response);
         $("#newsTitle").text(response.results[0].title);
-        $("#newsThumb").attr("src", response.results[0].multimedia[2].url);
-        $("#newsThumb").attr("alt", response.results[0].multimedia[2].caption);
+        $("#newsThumb").attr("src", response.results[0].multimedia[3].url);
+        $("#newsThumb").attr("alt", response.results[0].multimedia[3].caption);
         $("#storyDetail").text(response.results[0].abstract);
         $("#storyLink").attr("href", response.results[0].url);
 
