@@ -7,20 +7,42 @@ var currRain = $("#chanceOfRain");
 var futureMinTemp = $("#minTemp");
 var futureMaxTemp = $("#maxTemp");
 var futureRain = $("#chanceOfRain2");
+var searchStock = $("#search-stock");
+
 
 var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 
-// ====================================================================================
 
+function getStock(ticker='TSLA'){
+    var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=AM5YIH12ODHXL7UF';
+    $.ajax({
+        url : url,
+        method: 'GET',
+    }).then(function(response) {
+        console.log(response)
+        var stock, price, high, low, perChange;
+        var globalQuote = response['Global Quote']
+        console.table(globalQuote);
+        if (globalQuote.hasOwnProperty('01. symbol')) {
+        stock = globalQuote['01. symbol'];
+        price = globalQuote['05. price'];
+        high = globalQuote['03. high'];
+        low = globalQuote['04. low'];
+        perChange = globalQuote['10. change percent'];
+        console.log(stock, price, high, low, perChange);
+        $('#stock-ticker').text(stock);
+        $('#stock-price').text(price);
+        $('#stock-high').text(high);
+        $('#stock-low').text(low);
+        $('#stock-change').text(perChange);
+    }else{
+        $('#stock-ticker').text('Please Enter Valid Symbol')
+    }
+ });
 
+} 
 
-
-
-
-
-// =====================================================================================
-
-
+// ======================================================================================
 
 function getWeather(city) {
     var currWURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + wKey + "&units=imperial";
@@ -208,3 +230,8 @@ function populateCrypto (event) {
 }
 
 $(document).on("click", "#cryptoSearch", populateCrypto);
+searchStock.on('click', function(){
+    var ticker = $('#stock-input').val();
+    if(ticker == '') return;
+    getStock(ticker);
+});
