@@ -275,8 +275,8 @@ function topNews () {
     }).then(function (response) {
         console.log(response);
         $("#newsTitle").text(response.results[0].title);
-        $("#newsThumb").attr("src", response.results[0].multimedia[0].url);
-        $("#newsThumb").attr("alt", response.results[0].multimedia[0].caption);
+        $("#newsThumb").attr("src", response.results[0].multimedia[2].url);
+        $("#newsThumb").attr("alt", response.results[0].multimedia[2].caption);
         $("#storyDetail").text(response.results[0].abstract);
         $("#storyLink").attr("href", response.results[0].url);
 
