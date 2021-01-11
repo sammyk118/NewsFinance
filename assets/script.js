@@ -25,13 +25,14 @@ var wKey = "dfaa5e58f81db9579a91fe56b2e69d8e";
 function getWeather(city) {
     var currWURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + wKey + "&units=imperial";
     var futureWURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + wKey + "&units=imperial";
+    $("#prevSearch").text(city);
 
     $.ajax({
         url: currWURL,
         method: "GET",
     }).then(function (response) {
         currTemp.text("Temperature: " + response.main.temp);
-        // console.log(response);
+        console.log(response);
     })
 
     $.ajax({
@@ -44,6 +45,7 @@ function getWeather(city) {
                 futureMinTemp.text("Min: " + response.list[i].main.temp_min);
                 futureMaxTemp.text("Max: " + response.list[i].main.temp_max);
                 futureRain.text("Rain Chance: " + response.list[i].pop);
+                $("#displayLctn").text(city);
                 break;
             }
         }
@@ -75,11 +77,14 @@ function dateAndTime() {
 searchBtn.on("click", function (event) {
     var city = "";
     city = searchCity.val().trim();
+    localStorage.setItem("lastCity", city);
     // console.log(city);
     getWeather(city);
 });
 
 dateAndTime();
+
+getWeather(localStorage.getItem("lastCity"));
 
 function populateCrypto (event) {
     event.preventDefault();

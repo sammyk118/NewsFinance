@@ -23,3 +23,7 @@ label {
 button {
     margin-left: 2%;
 }
+
+.modal {
+    display: none;
+}

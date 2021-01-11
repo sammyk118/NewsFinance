@@ -37,8 +37,8 @@
             <hr/>
 
             <!-- Add Current Location Button -->
-            <h4 style="font-weight: bold;">Current Location:</h4>
-            <button id="currentLocation" class="button"> </button>
+            <h4 style="font-weight: bold;">Currently Displayed Location:</h4>
+            <h5 id="prevSearch"></h5>
         </aside>
 
         <!-- Create the right side overall pane -->
@@ -67,7 +67,7 @@
 
                 <!-- Create third card for Weather -->
                 <article id="weather" class="card cell medium-6">
-                    <h4>Current Weather:</h4>
+                    <h4>Current Weather in <span id="displayLctn"></span>:</h4>
                     <p id="temp"></p>
                     <p id="weatherIcon"></p>
                     <p id="chanceOfRain"></p>
@@ -90,9 +90,11 @@
                         <button id="cryptoSearch" class="button">Go</button>
                     </form>
 
-                    <!-- Display the Crypto name, price and call a chart -->
+                    <!-- Display the Crypto name and price -->
                     <h4 id="cryptoArea">Crypto Name: <span id="cryptoName"></span></h4>
-                    <section id="inputIssue" style="display: none;" class="card"></section>
+
+                    <!-- Input Issue Modal -->
+                    <section id="inputIssue" class="modal"></section>
                     
 
                 </article>
