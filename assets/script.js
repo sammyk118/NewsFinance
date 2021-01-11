@@ -47,7 +47,7 @@ function getStock(ticker='TSLA'){
 function getWeather(city) {
     var currWURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + wKey + "&units=imperial";
     var futureWURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + wKey + "&units=imperial";
-    $("#prevSearch").text(city);
+    
 
     $.ajax({
         url: currWURL,
