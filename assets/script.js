@@ -254,8 +254,8 @@ function reShowCrypto () {
 $(document).on("click", "#cryptoSearch", populateCrypto);
 
 $(document).on("click", "#modalBtn", reShowCrypto);
-=======
-$(document).on("click", "#cryptoSearch", populateCrypto);
+
+
 searchStock.on('click', function(){
     var ticker = $('#stock-input').val();
     if(ticker == '') return;
