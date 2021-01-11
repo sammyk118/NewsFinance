@@ -27,3 +27,8 @@ button {
 .modal {
     display: none;
 }
+
+#modalTitle {
+    text-align: center;
+
+}

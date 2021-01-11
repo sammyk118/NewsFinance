@@ -198,11 +198,12 @@ function populateCrypto (event) {
         // Create a check to see if the crypto entered exists
         if (!priceChg) {
             // When it doesn't, we need to pop out a modal that says this crypto doesn't exist.
-            $("#cryptoName").text("This crypto search term is not supported, please choose from this list of options");
+            // $("#cryptoName").text("This crypto search term is not supported, please choose from this list of options");
             // In this modal, could we add a list of the top 25 coins by marketcap with name and search symbol **User validation**
             $("#inputIssue").attr("style", "display: flex; background-color: yellow; color: red");
             for (j=0; j<25; j++) {
-                $("#inputIssue").append("<p>Name: " + validCryptos[j].name + " -  Symbol: " + validCryptos[j].symbol + "</p>");
+                $("#validCryptos").append("<tr><th>" + validCryptos[j].name + "</th><th>" + validCryptos[j].symbol + "</th></tr>");
+                
             }
         }
         else {
