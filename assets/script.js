@@ -102,6 +102,7 @@ searchBtn.on("click", function (event) {
     localStorage.setItem("lastCity", city);
     // console.log(city);
     getWeather(city);
+    // initMap(city);
 });
 
 dateAndTime();
@@ -113,7 +114,7 @@ function populateCrypto (event) {
     var apikey = "8e3a7aa0-9ee8-452e-aaf7-fabcc9ed8aae";
     var cryptoURL = "https://cors-anywhere.herokuapp.com/http://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY="+apikey;
     var cryptoInput = $("#cryptoInput").val().trim();
-    console.log(cryptoURL);
+    // console.log(cryptoURL);
     // $("#cryptoName").text(cryptoInput.toUpperCase());
 
     $.ajax({
@@ -242,11 +243,19 @@ function reShowCrypto () {
     $("#crypto").attr("style", "display: flex;");
 }
 
+// function initMap(inputCity) {
+//     var location = inputCity;
+//     const map = new google.maps.MAP(document.getElementById("map"), {
+//         zoom: 4,
+//         center: location,
+//     });
+// }
+
 $(document).on("click", "#cryptoSearch", populateCrypto);
 
 $(document).on("click", "#modalBtn", reShowCrypto);
-=======
-$(document).on("click", "#cryptoSearch", populateCrypto);
+
+
 searchStock.on('click', function(){
     var ticker = $('#stock-input').val();
     if(ticker == '') return;

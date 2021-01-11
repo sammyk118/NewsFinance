@@ -7,8 +7,11 @@
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-    <!-- Compressed JavaScript -->
-
+    <!-- Google Maps API -->
+    <!-- <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBykq3rEskmQZM6ivM9X3kNe8RnuLYcMvk&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script> -->
 
     <link rel="stylesheet" href="./assets/style.css">
     <title>User Dashboard</title>
@@ -39,6 +42,7 @@
             <!-- Add Current Location Button -->
             <h4 style="font-weight: bold;">Currently Displayed Location:</h4>
             <h5 id="prevSearch"></h5>
+            <div id="map"></div>
         </aside>
 
         <!-- Create the right side overall pane -->
@@ -106,6 +110,7 @@
                     <form>
                         <label>Enter Cryptocurrency:</label>
                         <input id="cryptoInput">
+                        <button class="button" id="cryptoSearch">Search</button>
                     </form>
 
 
