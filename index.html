@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
     <!-- Google Maps API -->
-    
-
+    <!-- <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBykq3rEskmQZM6ivM9X3kNe8RnuLYcMvk&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script> -->
     <link rel="stylesheet" href="./assets/style.css">
     <title>User Dashboard</title>
 </head>
@@ -24,7 +26,7 @@
     <!-- Create an overall container for the page -->
     <main class="grid-x">
         <!-- Create the left side panel -->
-        <aside id="leftPane" class=" cell medium-3">
+        <aside id="leftPane" class="cell medium-3">
             <!-- Add in input form -->
             <!-- <form>
                 <div class="cell medium-12">
@@ -33,8 +35,8 @@
                     <button class="button expanded" id="citySearch">Search</button>
                 </div>
             </form> -->
-          
-                <input type='text' id='cityInput' />
+          <label>City</label>
+                <input type='text' id='cityInput' placeholder="please enter a city"/>
                 <button id='citySearch' class='button expanded'>Search</button>
                 <hr />
 
@@ -78,10 +80,9 @@
             </div>
 
             <!-- Create grid bottom row -->
-            <div id="topRow" class="grid-x">
-                <!-- Create second card for Scores -->
+            <div id="bottomRow" class="grid-x">
                 <article id="stocks" class="card cell medium-6">
-                    <h4>Stocks</h4>
+                    <label>Stocks</label>
                     <input type='text' placeholder="please enter symbol" id='stock-input' />
                     <button id='search-stock' class='button'>Search</button>
                     <h4 id="stock-ticker"></h4>
@@ -106,14 +107,11 @@
 
                 </article>
 
-                <!-- Create fourth card for Cryptocurrency -->
                 <article id="crypto" class="card cell medium-6">
                     <!-- Create input form for the desired crypto -->
-                    <form>
-                        <label>Enter Cryptocurrency:</label>
-                        <input id="cryptoInput">
+                        <label>Cryptocurrency</label>
+                        <input id="cryptoInput" type="text" placeholder="please enter cryptocurrency">
                         <button class="button" id="cryptoSearch">Search</button>
-                    </form>
 
 
                     <!-- Display the Crypto name and price -->
@@ -144,13 +142,10 @@
         </section>
     </main>
 
-
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
         integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./assets/script.js"></script>
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBykq3rEskmQZM6ivM9X3kNe8RnuLYcMvk&callback=initMap" type="text/javascript"></script>
 </body>
 
 </html>
