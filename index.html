@@ -32,8 +32,8 @@
             <hr />
 
             <h4>Current Weather in <span id="displayLctn"></span>:</h4>
-            <p id="temp"><img id="weatherIcon"></img></p>
-            
+            <p id="temp"></p>
+
             <p id="chanceOfWeather"></p>
 
             <br />
@@ -60,13 +60,15 @@
                 </div>
                 <article id="news" class="card cell medium-8">
                     <h4>Top News Story:</h4><br>
-                    <h5 id="newsTitle"></h5>
+                    <a id="storyLink" target="_blank">
+                        <h5 id="newsTitle"></h5>
+                    </a>
 
                     <div id="newsRow" class="grid-x">
                         <img id="newsThumb" class="card cell medium-3" style="float:right;">
                         <p id="storyDetail" class="card cell medium-6"></p>
                     </div>
-                    <a id="storyLink" target="_blank">Link to Story</a>
+                    <!-- <a id="storyLink" target="_blank">Link to Story</a> -->
                 </article>
 
 
