@@ -113,7 +113,7 @@ function getWeather(city, country) {
                 futureMinTemp.text("Min: " + response.list[i].main.temp_min);
                 futureMaxTemp.text("Max: " + response.list[i].main.temp_max);
                 futureRain.text("Rain Chance: " + response.list[i].pop);
-                $("#displayLctn").text(city);
+                $("#displayLctn").text(city+", "+country);
                 break;
             }
         }
@@ -426,7 +426,7 @@ $(document).on("click", "#citySearch", function (event) {
 
 dateAndTime();
 
-getWeather(localStorage.getItem("lastCity"));
+getWeather(localStorage.getItem("lastCity"),localStorage.getItem("lastCountry"));
 
 function populateCrypto(event) {
     event.preventDefault();
