@@ -1,4 +1,5 @@
 # team7-score-dash
+
 User Story:
 
 ===========
@@ -11,20 +12,12 @@ User Story:
 ```js
 setInterval(dateAndTime, 1000);
 
-getWeather(localStorage.getItem("lastCity"),localStorage.getItem("lastCountry"));
+getWeather(
+  localStorage.getItem("lastCity"),
+  localStorage.getItem("lastCountry")
+);
 ```
-<br>
 
-## New third party API
-
-```js
-function initMap() {
-    coords = {lat: latInp, lng: lngInp};   
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: coords,
-      zoom: 8,
-    });
-```
 <br>
 
 ## API 1
@@ -47,33 +40,69 @@ function getStock(ticker='TSLA'){
 ## API 2
 
 ```js
- $.ajax({
-        url: cryptoURL,
+$.ajax({
+  url: cryptoURL,
+  method: "GET",
+  cors: true,
+  beforeSend: function () {
+    $("#loaderCirc").attr("style", "display: flex");
+  },
+  complete: function () {
+    $("#loaderCirc").attr("style", "display: none");
+  },
+});
+```
+
+<br>
+
+## Live Weather
+
+```js
+$.ajax({
+        url: currWURL,
         method: "GET",
-        cors: true,
-        beforeSend: function(){
-            $("#loaderCirc").attr("style", "display: flex");
-        },
-        complete: function(){
-            $("#loaderCirc").attr("style", "display: none");
-        },
-    })
+    }).then(function (response) {
+        console.log(response);
+
+        let temp = Math.round(response.main.temp);
+        currTemp.text("Temperature: " + temp + "\xB0 F");
+        var weatherIcon = response.weather[0].icon;
+        currTemp.append("<img src='https://openweathermap.org/img/wn/" + weatherIcon + ".png'></img>");
+
+        latInp = response.coord.lat;
+        lngInp = response.coord.lon;
+        initMap(city);
+    }
+
+```
+
+<br>
+
+## New third party API
+
+```js
+function initMap() {
+    coords = {lat: latInp, lng: lngInp};
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: coords,
+      zoom: 8,
+    });
 ```
 
 ## Deployed Link
 
-* [See Live Site](/)
+- [See Live Site](/)
 
 ## Built With
 
-* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [Bootstrap](https://getbootstrap.com/)
-* [CoinMarketCap](https://coinmarketcap.com/api/)
-* [OpenWeatherMap](https://openweathermap.org/api)
-* [News API(TBD)]()
-* [Stocks API](https://www.alphavantage.co/)
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Bootstrap](https://getbootstrap.com/)
+- [CoinMarketCap](https://coinmarketcap.com/api/)
+- [OpenWeatherMap](https://openweathermap.org/api)
+- [News API(TBD)]()
+- [Stocks API](https://www.alphavantage.co/)
 
 ## Authors
 
@@ -83,11 +112,9 @@ function getStock(ticker='TSLA'){
 
 **Sammy Kroner** [LinkedIn](www.linkedin.com/in/samuel-kroner-44aa11169)
 
-
-
 ## License
 
-This project is licensed under the MIT License 
+This project is licensed under the MIT License
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
