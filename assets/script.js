@@ -80,7 +80,12 @@ function getWeather(city) {
     }).then(function (response) {
         console.log(response);
         currTemp.text("Temperature: " + response.main.temp);
-        // console.log(response.coord.lat);
+        var weatherIcon = response.weather[0].icon;
+        console.log(response);
+        // Should we be adding the current weather icon, as well as chance of rain in 1Hr?
+            // weather icon -> response.weather[0].icon
+            currTemp.append("<img src='https://openweathermap.org/img/wn/"+weatherIcon+".png'></img>");
+
         latInp = response.coord.lat;
         lngInp = response.coord.lon;
         initMap(city);
@@ -148,13 +153,24 @@ function populateCrypto(event) {
     var apikey = "8e3a7aa0-9ee8-452e-aaf7-fabcc9ed8aae";
     var cryptoURL = "https://cors-anywhere.herokuapp.com/http://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=" + apikey;
     var cryptoInput = $("#cryptoInput").val().trim();
-    // console.log(cryptoURL);
-    // $("#cryptoName").text(cryptoInput.toUpperCase());
+
+    // Need to add in a loader that shows until the response comes in
+    // Before the response comes in show the loader
+    // $("#loaderCirc").attr("style", "display: flex");
+
+    // Once the response arrives, hide the loader
+    // $("#loaderCirc").attr("style", "display: none");
 
     $.ajax({
         url: cryptoURL,
         method: "GET",
-        cors: true
+        cors: true,
+        beforeSend: function(){
+            $("#loaderCirc").attr("style", "display: flex");
+        },
+        complete: function(){
+            $("#loaderCirc").attr("style", "display: none");
+        },
     }).then(function (response) {
         $("#cupr").remove();
         $("#1hpc").remove();
