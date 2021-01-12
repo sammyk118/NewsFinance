@@ -2,7 +2,7 @@
 User Story:
 
 ===========
-![Image](.png)
+![Image](./assets/picture-of-site.png)
 
 <br>
 
