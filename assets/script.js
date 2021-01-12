@@ -3,7 +3,7 @@ var cityInput = $("#cityInput");
 var currTime = $("#timeOfDay");
 var currDate = $("#dateTime");
 var currTemp = $("#temp");
-var currRain = $("#chanceOfRain");
+var currRain = $("#chanceOfWeather");
 var weatherIcon = $("#weatherIcon");
 var futureMinTemp = $("#minTemp");
 var futureMaxTemp = $("#maxTemp");
@@ -81,17 +81,17 @@ function getWeather(city) {
         console.log(response);
         currTemp.text("Temperature: " + response.main.temp);
         var weatherIcon = response.weather[0].icon;
-        console.log(response);
         // Should we be adding the current weather icon, as well as chance of rain in 1Hr?
             // weather icon -> response.weather[0].icon
-            currTemp.append("<img src='https://openweathermap.org/img/wn/"+weatherIcon+".png'></img>");
-
+        currTemp.append("<img src='https://openweathermap.org/img/wn/"+weatherIcon+".png'></img>");
+        
         latInp = response.coord.lat;
         lngInp = response.coord.lon;
+        console.log("executing map function with city: ", city);
         initMap(city);
 
-        weatherIcon.attr("src","https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
-        weatherIcon.attr("alt", response.weather[0].description);
+        // weatherIcon.attr("src","https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
+        // weatherIcon.attr("alt", response.weather[0].description);
     })
 
     $.ajax({

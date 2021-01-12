@@ -4,7 +4,7 @@ header {
 }
 
 .card {
-    margin-top: 1px;
+    
     padding: 1%;
     background-color: linen;
 } 
@@ -45,8 +45,8 @@ button {
 
 #map {
 
-    height: 40%;
-    width: 75%;   
+    height: 100%;
+    width: 100%;   
 }
 
 #loaderCirc {
