@@ -158,7 +158,13 @@ function populateCrypto(event) {
     $.ajax({
         url: cryptoURL,
         method: "GET",
-        cors: true
+        cors: true,
+        beforeSend: function(){
+            $("#loaderCirc").attr("style", "display: flex");
+        },
+        complete: function(){
+            $("#loaderCirc").attr("style", "display: none");
+        },
     }).then(function (response) {
         $("#cupr").remove();
         $("#1hpc").remove();
