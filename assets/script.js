@@ -116,9 +116,12 @@ function getWeather(city) {
         // console.log(response);
         for (i = 0; i < response.list.length; i++) {
             if (response.list[i].dt_txt.split(" ")[1] == "12:00:00") {
-                // console.log(response.list[i]);
-                futureMinTemp.text("Min: " + response.list[i].main.temp_min);
-                futureMaxTemp.text("Max: " + response.list[i].main.temp_max);
+                console.log(response.list[i]);
+                let maxTemp = Math.round(response.list[i].main.temp_max);
+                let minTemp = Math.round(response.list[i].main.temp_min);
+
+                futureMinTemp.text("Min: " + minTemp);
+                futureMaxTemp.text("Max: " + maxTemp);
                 futureRain.text("Rain Chance: " + response.list[i].pop);
                 $("#displayLctn").text(city);
                 break;
@@ -159,7 +162,7 @@ $(document).on("click", "#citySearch", function (event) {
     
 });
 
-dateAndTime();
+setInterval(dateAndTime, 1000);
 
 getWeather(localStorage.getItem("lastCity"));
 

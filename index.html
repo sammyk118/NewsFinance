@@ -25,7 +25,7 @@
     <!-- Create an overall container for the page -->
     <main class="grid-x">
         <!-- Create the left side panel -->
-        <aside id="leftPane" class="cell medium-2">
+        <aside id="leftPane" class="cell large-2 medium-4 small-12">
             <label>City</label>
             <input type='text' id='cityInput' placeholder="please enter a city" />
             <button id='citySearch' class='button expanded'>Search</button>
@@ -43,22 +43,19 @@
             <p id="maxTemp"></p>
             <p id="chanceOfRain2"></p>
 
-
-
-
         </aside>
 
         <!-- Create the right side overall pane -->
-        <section id="mainPane" class="cell medium-9">
+        <section id="mainPane" class="cell large-10 medium-8 small-12">
 
             <!-- Create grid top row -->
             <div id="topRow" class="grid-x">
 
                 <!-- Create first card for News -->
-                <div id="map-box" class="card cell medium-4">
+                <div id="map-box" class="card cell large-4 medium-12 small-12">
                     <div id="map"></div>
                 </div>
-                <article id="news" class="card cell medium-8">
+                <article id="news" class="card cell large-8 medium-12 small-12">
                     <h4>Top News Story:</h4><br>
                     <a id="storyLink" target="_blank">
                         <h5 id="newsTitle"></h5>
@@ -76,7 +73,7 @@
 
             <!-- Create grid bottom row -->
             <div id="bottomRow" class="grid-x">
-                <article id="stocks" class="card cell medium-6">
+                <article id="stocks" class="card cell large-6 medium-6 small-12">
                     <label>Stocks</label>
                     <input type='text' placeholder="please enter symbol" id='stock-input' />
                     <button id='search-stock' class='button'>Search</button>
@@ -102,7 +99,7 @@
 
                 </article>
 
-                <article id="crypto" class="card cell medium-6">
+                <article id="crypto" class="card cell large-6 medium-6 small-12">
                     <!-- Create input form for the desired crypto -->
                     <label>Cryptocurrency</label>
                     <input id="cryptoInput" type="text" placeholder="please enter cryptocurrency">
