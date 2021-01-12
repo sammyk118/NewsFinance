@@ -147,8 +147,13 @@ function populateCrypto(event) {
     var apikey = "8e3a7aa0-9ee8-452e-aaf7-fabcc9ed8aae";
     var cryptoURL = "https://cors-anywhere.herokuapp.com/http://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=" + apikey;
     var cryptoInput = $("#cryptoInput").val().trim();
-    // console.log(cryptoURL);
-    // $("#cryptoName").text(cryptoInput.toUpperCase());
+
+    // Need to add in a loader that shows until the response comes in
+    // Before the response comes in show the loader
+    // $("#loaderCirc").attr("style", "display: flex");
+
+    // Once the response arrives, hide the loader
+    // $("#loaderCirc").attr("style", "display: none");
 
     $.ajax({
         url: cryptoURL,
