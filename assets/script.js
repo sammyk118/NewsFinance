@@ -3,7 +3,7 @@ var cityInput = $("#cityInput");
 var currTime = $("#timeOfDay");
 var currDate = $("#dateTime");
 var currTemp = $("#temp");
-var currRain = $("#chanceOfWeather");
+var currWeather = $("#chanceOfWeather");
 var weatherIcon = $("#weatherIcon");
 var futureMinTemp = $("#minTemp");
 var futureMaxTemp = $("#maxTemp");
@@ -93,8 +93,7 @@ function getWeather(city) {
         if (keys[8] != "sys") {
             console.log(keys[8], " has a weather event")
             var weatherEvent = keys[8];
-            console.log(response.entries);
-            currRain.text("Chance of " + keys[8]);
+            currWeather.text("Chance of " + weatherEvent);
         }
         else {
             currRain.text("No rain or snow");
