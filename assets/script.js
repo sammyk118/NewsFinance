@@ -79,15 +79,30 @@ function getWeather(city) {
         method: "GET",
     }).then(function (response) {
         console.log(response);
-        currTemp.text("Temperature: " + response.main.temp);
+        
+        let temp = Math.round(response.main.temp);
+        currTemp.text("Temperature: " + temp);
         var weatherIcon = response.weather[0].icon;
         // Should we be adding the current weather icon, as well as chance of rain in 1Hr?
-            // weather icon -> response.weather[0].icon
-        currTemp.append("<img src='https://openweathermap.org/img/wn/"+weatherIcon+".png'></img>");
+        // weather icon -> response.weather[0].icon
+        currTemp.append("<img src='https://openweathermap.org/img/wn/" + weatherIcon + ".png'></img>");
         
+        let keys = Object.keys(response).sort();
+        console.log(keys);
+        console.log(keys[8]);
+        if (keys[8] != "sys") {
+            console.log(keys[8], " has a weather event")
+            var weatherEvent = keys[8];
+            console.log(response.entries);
+            currRain.text("Chance of " + keys[8]);
+        }
+        else {
+            currRain.text("No rain or snow");
+        }
+        
+
         latInp = response.coord.lat;
         lngInp = response.coord.lon;
-        console.log("executing map function with city: ", city);
         initMap(city);
 
         // weatherIcon.attr("src","https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
@@ -98,10 +113,10 @@ function getWeather(city) {
         url: futureWURL,
         method: "GET",
     }).then(function (response) {
-        console.log(response);
+        // console.log(response);
         for (i = 0; i < response.list.length; i++) {
             if (response.list[i].dt_txt.split(" ")[1] == "12:00:00") {
-                console.log(response.list[i]);
+                // console.log(response.list[i]);
                 futureMinTemp.text("Min: " + response.list[i].main.temp_min);
                 futureMaxTemp.text("Max: " + response.list[i].main.temp_max);
                 futureRain.text("Rain Chance: " + response.list[i].pop);
@@ -367,7 +382,7 @@ function topNews() {
         url: newsURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+        // console.log(response);
         $("#newsTitle").text(response.results[0].title);
         $("#newsThumb").attr("src", response.results[0].multimedia[3].url);
         $("#newsThumb").attr("alt", response.results[0].multimedia[3].caption);
