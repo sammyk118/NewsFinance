@@ -89,7 +89,7 @@ function getWeather(city, country) {
         console.log(response);
         
         let temp = Math.round(response.main.temp);
-        currTemp.text("Temperature: " + temp);
+        currTemp.text("Temperature: " + temp + "\xB0 F");
         var weatherIcon = response.weather[0].icon;
         // Should we be adding the current weather icon, as well as chance of rain in 1Hr?
         // weather icon -> response.weather[0].icon
@@ -104,7 +104,7 @@ function getWeather(city, country) {
             currWeather.text("Chance of " + weatherEvent);
         }
         else {
-            currRain.text("No rain or snow");
+            currWeather.text("No rain or snow");
         }
         
 
@@ -127,9 +127,9 @@ function getWeather(city, country) {
                 let maxTemp = Math.round(response.list[i].main.temp_max);
                 let minTemp = Math.round(response.list[i].main.temp_min);
 
-                futureMinTemp.text("Min: " + minTemp);
-                futureMaxTemp.text("Max: " + maxTemp);
-                futureRain.text("Rain Chance: " + response.list[i].pop);
+                futureMinTemp.text("Min: " + minTemp + "\xB0 F");
+                futureMaxTemp.text("Max: " + maxTemp + "\xB0 F");
+                futureRain.text("Rain Chance: " + response.list[i].pop + "%");
                 $("#displayLctn").text(city+", "+country);
                 break;
             }
