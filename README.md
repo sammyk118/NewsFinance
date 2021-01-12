@@ -6,31 +6,58 @@ User Story:
 
 <br>
 
-## Current Weather
+## Local Storage
 
 ```
+setInterval(dateAndTime, 1000);
 
-```
-<br>
-
-## Current News
-
-```
-
+getWeather(localStorage.getItem("lastCity"),localStorage.getItem("lastCountry"));
 ```
 <br>
 
-## Current Sports Scores
+## New third party API
 
 ```
+function initMap() {
+    coords = {lat: latInp, lng: lngInp};   
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: coords,
+      zoom: 8,
+    });
+```
+<br>
 
+## API 1
+
+```
+function getStock(ticker='TSLA'){
+    var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=AM5YIH12ODHXL7UF';
+    $.ajax({
+        url: url,
+        method: 'GET',
+    }).then(function (response) {
+        console.log(response)
+        var stock, price, high, low, perChange;
+        var globalQuote = response['Global Quote']
+        console.table(globalQuote);
 ```
 
 <br>
 
-## Current Crypto Currency Prices
+## API 2
 
 ```
+ $.ajax({
+        url: cryptoURL,
+        method: "GET",
+        cors: true,
+        beforeSend: function(){
+            $("#loaderCirc").attr("style", "display: flex");
+        },
+        complete: function(){
+            $("#loaderCirc").attr("style", "display: none");
+        },
+    })
 ```
 
 ## Deployed Link
@@ -46,7 +73,7 @@ User Story:
 * [CoinMarketCap](https://coinmarketcap.com/api/)
 * [OpenWeatherMap](https://openweathermap.org/api)
 * [News API(TBD)]()
-* [Sports API(TBD)]()
+* [Stocks API](https://www.alphavantage.co/)
 
 ## Authors
 
