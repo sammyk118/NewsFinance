@@ -8,7 +8,7 @@ User Story:
 
 ## Local Storage
 
-```
+```js
 setInterval(dateAndTime, 1000);
 
 getWeather(localStorage.getItem("lastCity"),localStorage.getItem("lastCountry"));
@@ -17,7 +17,7 @@ getWeather(localStorage.getItem("lastCity"),localStorage.getItem("lastCountry"))
 
 ## New third party API
 
-```
+```js
 function initMap() {
     coords = {lat: latInp, lng: lngInp};   
     map = new google.maps.Map(document.getElementById("map"), {
@@ -29,7 +29,7 @@ function initMap() {
 
 ## API 1
 
-```
+```js
 function getStock(ticker='TSLA'){
     var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+ticker+'&apikey=AM5YIH12ODHXL7UF';
     $.ajax({
@@ -46,7 +46,7 @@ function getStock(ticker='TSLA'){
 
 ## API 2
 
-```
+```js
  $.ajax({
         url: cryptoURL,
         method: "GET",
