@@ -1,9 +1,9 @@
 # team7-score-dash
 
-User Story:
+For this project, we created a website that draws from 5 APIs to populate the page. It shows the current and forecasted weather, a map of the surrounding area, the current top news headline, a search bar to find stock prices, and a search bar to find crypto prices.
 
 ===========
-![Image](./assets/picture-of-site.png)
+![Image](./assets/final-output.png)
 
 <br>
 
@@ -20,7 +20,7 @@ getWeather(
 
 <br>
 
-## API 1
+## API 1 - Stock Prices
 
 ```js
 function getStock(ticker='TSLA'){
@@ -37,7 +37,7 @@ function getStock(ticker='TSLA'){
 
 <br>
 
-## API 2
+## API 2 - Crypto Prices
 
 ```js
 $.ajax({
@@ -78,7 +78,7 @@ $.ajax({
 
 <br>
 
-## New third party API
+## New third party API - Google Maps
 
 ```js
 function initMap() {
