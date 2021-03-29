@@ -5,7 +5,7 @@ For this project, we created a website that draws from 5 APIs to populate the pa
 <hr>
 
 ## Sample View of Site
-![Image](./assets/final-output.png)
+![Image](./assets/images/final-output.png)
 
 <hr>
 
@@ -188,7 +188,7 @@ We achieved this by creating a loader html element on the DOM, but only allowing
 
 ## Deployed Link
 
-- [See Live Site](https://slimbeek6.github.io/team7-score-dash/)
+- [See Live Site](https://sammyk118.github.io/NewsFinance/)
 
 ## Built With
 
