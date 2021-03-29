@@ -447,7 +447,7 @@ getWeather(localStorage.getItem("lastCity"),localStorage.getItem("lastCountry"))
 
 function populateCrypto(event) {
     event.preventDefault();
-    var apikey = "8e3a7aa0-9ee8-452e-aaf7-fabcc9ed8aae";
+    var apikey = "bcaefdec-464b-49f4-984a-0a41466e7a71";
     var cryptoURL = "https://cors-anywhere.herokuapp.com/http://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=" + apikey;
     var cryptoInput = $("#cryptoInput").val().trim();
 
