@@ -199,7 +199,7 @@ We achieved this by creating a loader html element on the DOM, but only allowing
 - [Google Maps](https://developers.google.com/maps/documentation/javascript/)
 - [CoinMarketCap](https://coinmarketcap.com/api/)
 - [OpenWeatherMap](https://openweathermap.org/api)
-- [New York Times)](https://developer.nytimes.com/apis)
+- [New York Times](https://developer.nytimes.com/apis)
 - [Stocks API](https://www.alphavantage.co/)
 
 ## Authors
@@ -215,5 +215,3 @@ We achieved this by creating a loader html element on the DOM, but only allowing
 This project is licensed under the MIT License
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-<p>&copy; UC Berkeley Extension Bootcamp.</p>

@@ -5,7 +5,7 @@ var currDate = $("#dateTime");
 var currTemp = $("#temp");
 var currWeather = $("#chanceOfWeather");
 var weatherIcon = $("#weatherIcon");
-var futureMinTemp = $("#minTemp");
+var futureTemp = $("#temp2");
 var futureMaxTemp = $("#maxTemp");
 var futureRain = $("#chanceOfRain2");
 var searchStock = $("#search-stock");
@@ -124,11 +124,9 @@ function getWeather(city, country) {
         for (i = 0; i < response.list.length; i++) {
             if (response.list[i].dt_txt.split(" ")[1] == "12:00:00") {
                 console.log(response.list[i]);
-                let maxTemp = Math.round(response.list[i].main.temp_max);
-                let minTemp = Math.round(response.list[i].main.temp_min);
+                let Temp = Math.round(response.list[i].main.temp_min);
 
-                futureMinTemp.text("Min: " + minTemp + "\xB0 F");
-                futureMaxTemp.text("Max: " + maxTemp + "\xB0 F");
+                futureTemp.text("Temp: " + Temp + "\xB0 F");
                 futureRain.text("Rain Chance: " + response.list[i].pop + "%");
                 $("#displayLctn").text(city+", "+country);
                 break;
