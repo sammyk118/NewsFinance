@@ -164,7 +164,6 @@ function cityList(input) {
 }
 
 $(document).on("click", citySearch, function (event) {
-    console.log("countries: ", countries);
 
     var location = "";
     var city = "";
